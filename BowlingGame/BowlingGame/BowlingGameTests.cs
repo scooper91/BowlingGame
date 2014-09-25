@@ -30,7 +30,7 @@ namespace BowlingGame
             Assert.That(bowlingGame.TotalScore(), Is.EqualTo(90));
         }
 
-        [Test, Ignore]
+        [Test]
         public void Should_Score_20_When_Spare_Rolled_Then_5()
         {
             var bowlingGame = new BowlingGame();
@@ -47,12 +47,16 @@ namespace BowlingGame
         }
 
         [Test, Ignore]
-        public void Shoud_Score_14_When_Strike_Rolled_Then_Two_1s()
+        public void Should_Score_14_When_Strike_Rolled_Then_Two_1s()
         {
             var bowlingGame = new BowlingGame();
             bowlingGame.Roll(10);
             bowlingGame.Roll(1);
             bowlingGame.Roll(1);
+            for (var i = 0; i < 16; i++)
+            {
+                bowlingGame.Roll(0);
+            }
 
             Assert.That(bowlingGame.TotalScore(), Is.EqualTo(14));
         }

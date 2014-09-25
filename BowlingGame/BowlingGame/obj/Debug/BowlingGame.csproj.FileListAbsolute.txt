@@ -4,3 +4,4 @@ C:\code\Sandbox\Bowling\BowlingGame\BowlingGame\bin\Debug\nunit.framework.dll
 C:\code\Sandbox\Bowling\BowlingGame\BowlingGame\bin\Debug\nunit.framework.xml
 C:\code\Sandbox\Bowling\BowlingGame\BowlingGame\obj\Debug\BowlingGame.dll
 C:\code\Sandbox\Bowling\BowlingGame\BowlingGame\obj\Debug\BowlingGame.pdb
+C:\code\Sandbox\Bowling\BowlingGame\BowlingGame\obj\Debug\BowlingGame.csprojResolveAssemblyReference.cache

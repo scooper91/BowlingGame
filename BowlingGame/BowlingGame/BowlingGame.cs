@@ -9,7 +9,27 @@ namespace BowlingGame
 
         public int TotalScore()
         {
-            return _scoreCard.Sum();
+            /*for (int i = 0; i < 20; i++)
+            {
+                if (_scoreCard.Last() == 10)
+                {
+                    
+                }
+            } */
+
+            var score = 0;
+            for (int rollIndex = 0; rollIndex < 20; rollIndex+=2)
+            {
+                if (SpareScoredInFrame(rollIndex))
+                {
+                    score += 10 + _scoreCard[rollIndex + 2];
+                }
+                else
+                {
+                    score += _scoreCard[rollIndex] + _scoreCard[rollIndex + 1];
+                }
+            }
+            return score;
         }
 
         public void Roll(int pinsRolled)
@@ -17,17 +37,9 @@ namespace BowlingGame
             _scoreCard.Add(pinsRolled);
         }
 
-        public void Spare()
+        private bool SpareScoredInFrame(int rollIndex)
         {
-            /*foreach (var pinsRolled in _scoreCard)
-            {
-
-            }
-
-            if (_scoreCard[1] + _scoreCard[2] == 10)
-            {
-                _scoreCard[3] *= 2;
-            }*/
+            return _scoreCard[rollIndex] + _scoreCard[rollIndex + 1] == 10;
         }
     }
 }
