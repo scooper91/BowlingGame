@@ -9,18 +9,18 @@ namespace BowlingGame
 
         public int TotalScore()
         {
-            /*for (int i = 0; i < 20; i++)
-            {
-                if (_scoreCard.Last() == 10)
-                {
-                    
-                }
-            } */
-
             var score = 0;
-            for (int rollIndex = 0; rollIndex < 20; rollIndex+=2)
+            var rollCount = 0;
+
+            for (var rollIndex = 0; rollIndex < _scoreCard.Count; rollIndex += 2)
             {
-                if (SpareScoredInFrame(rollIndex))
+                rollCount += 1;
+                if (SpareScoredInFrame(rollIndex) && _scoreCard[rollIndex] == 10)
+                {
+                    rollCount -= 1;
+                    _scoreCard.Add(0);
+                    score += 10 + _scoreCard[rollIndex + 2] + _scoreCard[rollIndex + 3];
+                } else if (SpareScoredInFrame(rollIndex))
                 {
                     score += 10 + _scoreCard[rollIndex + 2];
                 }
