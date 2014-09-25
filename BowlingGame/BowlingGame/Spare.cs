@@ -1,0 +1,7 @@
+namespace BowlingGame
+{
+    class Spare
+    {
+        
+    }
+}

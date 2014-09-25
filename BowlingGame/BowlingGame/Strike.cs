@@ -1,0 +1,6 @@
+namespace BowlingGame
+{
+    class Strike
+    {
+    }
+}
