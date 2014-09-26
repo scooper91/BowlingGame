@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 
 namespace BowlingGame
 {
@@ -7,26 +6,28 @@ namespace BowlingGame
     {
         private readonly List<int> _scoreCard = new List<int>();
 
+
         public int TotalScore()
         {
-            var score = 0;
-            var rollCount = 0;
+			int rollCount = 0;
 
-            for (var rollIndex = 0; rollIndex < _scoreCard.Count; rollIndex += 2)
+            var score = 0;
+            for (var frameIndex = 0; frameIndex < 10; frameIndex += 1)
             {
-                rollCount += 1;
-                if (SpareScoredInFrame(rollIndex) && _scoreCard[rollIndex] == 10)
+                if (_scoreCard[rollCount] == 10)
                 {
-                    rollCount -= 1;
-                    _scoreCard.Add(0);
-                    score += 10 + _scoreCard[rollIndex + 2] + _scoreCard[rollIndex + 3];
-                } else if (SpareScoredInFrame(rollIndex))
+	                score += 10 + _scoreCard[rollCount + 1] + _scoreCard[rollCount + 2];
+					rollCount++;
+                }
+                else if (_scoreCard[rollCount] + _scoreCard[rollCount + 1] == 10)
                 {
-                    score += 10 + _scoreCard[rollIndex + 2];
+                    score += 10 + _scoreCard[rollCount + 2];
+	                rollCount += 2;
                 }
                 else
                 {
-                    score += _scoreCard[rollIndex] + _scoreCard[rollIndex + 1];
+	                score += _scoreCard[rollCount] + _scoreCard[rollCount + 1];
+	                rollCount += 2;
                 }
             }
             return score;
@@ -35,11 +36,6 @@ namespace BowlingGame
         public void Roll(int pinsRolled)
         {
             _scoreCard.Add(pinsRolled);
-        }
-
-        private bool SpareScoredInFrame(int rollIndex)
-        {
-            return _scoreCard[rollIndex] + _scoreCard[rollIndex + 1] == 10;
         }
     }
 }

@@ -46,7 +46,7 @@ namespace BowlingGame
             Assert.That(bowlingGame.TotalScore(), Is.EqualTo(20));
         }
 
-        [Test, Ignore]
+        [Test]
         public void Should_Score_14_When_Strike_Rolled_Then_Two_1s()
         {
             var bowlingGame = new BowlingGame();
@@ -60,5 +60,17 @@ namespace BowlingGame
 
             Assert.That(bowlingGame.TotalScore(), Is.EqualTo(14));
         }
+
+		[Test]
+		public void Should_Score_300_When_Perfect_Game()
+		{
+			var bowlingGame = new BowlingGame();
+			for (var i = 0; i < 12; i++)
+			{
+				bowlingGame.Roll(10);
+			}
+
+			Assert.That(bowlingGame.TotalScore(), Is.EqualTo(300));
+		}
     }
 }
