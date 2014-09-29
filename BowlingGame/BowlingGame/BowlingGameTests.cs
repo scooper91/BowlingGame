@@ -72,5 +72,50 @@ namespace BowlingGame
 
 			Assert.That(bowlingGame.TotalScore(), Is.EqualTo(300));
 		}
+
+		[Test]
+		public void Should_Score_33_When_Strike_Rolled_Then_Spare_Then_1()
+		{
+			var bowlingGame = new BowlingGame();
+			bowlingGame.Roll(10);
+			bowlingGame.Roll(7);
+			bowlingGame.Roll(3);
+			bowlingGame.Roll(1);
+			bowlingGame.Roll(1);
+			for (var i = 0; i < 14; i++)
+			{
+				bowlingGame.Roll(0);
+			}
+
+			Assert.That(bowlingGame.TotalScore(), Is.EqualTo(33));
+
+		}
+
+		[Test]
+		public void Should_Score_34_When_Spare_Rolled_Then_Spare_Then_1()
+		{
+			var bowlingGame = new BowlingGame();
+			bowlingGame.Roll(7);
+			bowlingGame.Roll(3);
+			bowlingGame.Roll(10);
+			bowlingGame.Roll(1);
+			bowlingGame.Roll(1);
+			for (var i = 0; i < 14; i++)
+			{
+				bowlingGame.Roll(0);
+			}
+
+			Assert.That(bowlingGame.TotalScore(), Is.EqualTo(34));
+		}
+
+		[Test]
+		public void Should_Score_Incomplete_Game()
+		{
+			var bowlingGame = new BowlingGame();
+
+			bowlingGame.Roll(1);
+
+			Assert.That(bowlingGame.TotalScore(), Is.EqualTo(1));
+		}
     }
 }
